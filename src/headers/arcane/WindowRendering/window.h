@@ -8,7 +8,6 @@
 #include <arcane/config.h>
 #include <arcane/glm.h>
 
-#include <arcane/UI/arcLayout.h>
 
 namespace arcane
 {
@@ -29,9 +28,6 @@ namespace arcane
 
 		void setScene (Scene *scene);
 		Scene *getScene ();
-
-		ArcLayout &layout ();
-		extern ArcObject *currentFocus;
 	}
 }
 

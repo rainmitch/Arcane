@@ -11,7 +11,6 @@
 #include <arcane/image.h>
 #include <arcane/resourceManager.h>
 #include <fstream>
-#include <arcane/UI/arcButton.h>
 
 #include <arcane/script.h>
 #include <arcane/time.h>
@@ -320,7 +319,17 @@ public:
 		//l->position = camera->transform.position;
 		//std::cout << camera->transform.rotation << std::endl;
 	}
+
+	void onGUI () override
+	{
+
+	}
 };
+
+void MainGUI ()
+{
+
+}
 
 int main ()
 {
@@ -423,43 +432,6 @@ int main ()
 			objs[i]->transform.rotation += vec3 (0, (360 / 3) * Time::delta (), 0);
 		//object->transform.rotation.y += (360/3) * (1.0/144);
 	};
-
-
-	ArcObject leftPanel;
-
-	leftPanel.x (new ScreenWidthPercentConstraint (0));
-	leftPanel.y (new ScreenHeightPercentConstraint ( 0));
-	leftPanel.width (new PixelConstraint (500));
-	leftPanel.height (new ScreenHeightPercentConstraint ( 1));
-	leftPanel.backgroundColor (ArcPixel ("#343434"));
-
-	ArcButton button = ArcButton ();
-	button.x (new CenterParentWidthConstraint ());
-	button.y (new PixelConstraint (32));
-	button.width (new PixelConstraint (200));
-	button.height(new PixelConstraint (75));
-	button.backgroundColor (ArcPixel (.3, .3, .3));
-	button.borderColor (ArcPixel (0.15, 0.15, 0.15));
-	button.borderSize (4);
-
-	button.onClick ([]() {
-		std::cout << "Yay!" << std::endl;
-	});
-	button.onHover ([&button](){
-		button.backgroundColor (ArcPixel (0.35, 0.35, 0.35));
-	});
-	button.onNotHover ([&button] ()
-	{
-		button.backgroundColor (ArcPixel (0.3, 0.3, 0.3));
-	});
-
-
-
-	leftPanel.layout ().addObject (&button);
-
-
-	leftPanel.add (&button);
-	Window::layout ().addObject (&leftPanel);
 
 	startArcane ();
 

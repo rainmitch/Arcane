@@ -451,7 +451,7 @@ namespace arcane
 			glDrawArrays (GL_TRIANGLES, 0, 6);
 		}
 
-		void renderUI (const ArcBuffer &buffer)
+		/*void renderUI (const ArcBuffer &buffer)
 		{
 			// todo: explore using a pixel buffer object instead
 			ArcSize size = buffer.size ();
@@ -459,7 +459,7 @@ namespace arcane
 
 			glTexImage2D (GL_TEXTURE_2D, 0, GL_RGBA, size.width (), size.height (), 0, GL_RGBA, GL_UNSIGNED_BYTE,
 						  buffer.data ());
-		}
+		}*/
 
 		void resizeFrame (const unsigned int &width, const unsigned int &height)
 		{

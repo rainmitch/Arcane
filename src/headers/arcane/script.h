@@ -11,6 +11,8 @@ namespace arcane
 		virtual void Start ();
 		virtual void Update ();
 
+		virtual void onGUI ();
+
 		Object *object = nullptr;
 	};
 }

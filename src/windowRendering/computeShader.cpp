@@ -89,11 +89,6 @@ namespace arcane
 		m_textures.emplace_back (std::make_tuple (name, textureID, textureFormat));
 	}
 
-	ArcBuffer ComputeShader::getImageResult ()
-	{
-
-	}
-
 	unsigned int ComputeShader::getTextureID (const std::string &id)
 	{
 		for (auto &t : m_textures)

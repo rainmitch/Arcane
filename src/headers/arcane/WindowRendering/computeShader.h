@@ -6,7 +6,6 @@
 
 #include <GL/glew.h>
 #include <arcane/glm.h>
-#include <arcane/UI/arcBuffer.h>
 #include <vector>
 #include <tuple>
 #include <map>
@@ -73,7 +72,6 @@ namespace arcane
 		int &height,
 					  const ComputeShaderTextureFormat &textureFormat);
 
-		ArcBuffer getImageResult ();
 		unsigned int getTextureID (const std::string &id);
 
 		template<typename T>

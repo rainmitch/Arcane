@@ -11,7 +11,6 @@ include_directories(src/headers)
 add_subdirectory(src/main)
 add_subdirectory(src/jobSystem)
 add_subdirectory(src/windowRendering)
-add_subdirectory(src/UI)
 
 add_executable(Arcane ${SRC} src/jobSystem/semaphore.cpp src/headers/arcane/jobSystem/semaphore.h)
-target_link_libraries(Arcane Main JobSystem WindowRendering UI)
+target_link_libraries(Arcane Main JobSystem WindowRendering)

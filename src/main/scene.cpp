@@ -188,4 +188,15 @@ namespace arcane
 	{
 		Renderer::setSkymap (images);
 	}
+
+	void Scene::runGUI ()
+	{
+		for (Object *obj : m_objects)
+		{
+			for (Script *script : obj->m_scripts)
+			{
+				script->onGUI ();
+			}
+		}
+	}
 }

@@ -12,4 +12,9 @@ namespace arcane
 	{
 
 	}
+
+	void Script::onGUI ()
+	{
+
+	}
 }

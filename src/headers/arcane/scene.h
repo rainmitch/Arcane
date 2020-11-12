@@ -26,6 +26,7 @@ namespace arcane
 		void setSkybox (const std::vector<Image *> &images);
 
 		void update ();
+		void runGUI ();
 
 		const std::vector<Light *> &getLights ();
 

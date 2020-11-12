@@ -7,6 +7,11 @@
 #include <arcane/WindowRendering/renderer.h>
 #include <map>
 
+
+#include "../imgui.h"
+#include "../imgui_impl_sdl.h"
+#include "../imgui_impl_opengl3.h"
+
 #ifdef WINDOWING_SYSTEM_SDL2
 
 namespace arcane
@@ -28,7 +33,6 @@ namespace arcane
 			SDL_GLContext glContext;
 		#endif
 
-		ArcBuffer *buffer;
 		void init (const std::string &title, const uint16_t &width, const uint16_t &height)
 		{
 			#if defined(RENDERING_SYSTEM_OPENGL43)
@@ -48,6 +52,10 @@ namespace arcane
 			}
 
 			#if defined (RENDERING_SYSTEM_OPENGL43)
+
+				SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+				SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
+				SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
 				win = SDL_CreateWindow (title.c_str (), SDL_WINDOWPOS_CENTERED,
 							SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE);
 				if (win == nullptr)
@@ -63,8 +71,6 @@ namespace arcane
 
 				SDL_GL_MakeCurrent (win, glContext);
 			#endif
-			auto size = Window::size ();
-			buffer = new ArcBuffer ({size.first, size.second});
 		}
 
 		bool running ()
@@ -91,6 +97,7 @@ namespace arcane
 			SDL_Event event;
 			while (SDL_PollEvent (&event))
 			{
+				ImGui_ImplSDL2_ProcessEvent (&event);
 				if (event.type == SDL_QUIT)
 				{
 					windowRunning = false;
@@ -125,32 +132,20 @@ namespace arcane
 				{
 					int x = event.button.x;
 					int y = event.button.y;
-
-					Window::layout ().propogateMouseClick (x, y);
 				}
 			}
 
 			int x;
 			int y;
 			SDL_GetMouseState (&x, &y);
-
-			Window::layout ().propogateMouseHover (x, y);
 		}
 
 		void render ()
-		{
-			auto s = size ();
-			if (s.first != buffer->size ().width () || s.second != buffer->size ().height ())
-			{
-				buffer->size ({s.first, s.second});
-			}
+		{/*
 
-			Window::layout ().render (*buffer);
-
-			Renderer::renderUI (*buffer);
 			currentScene->render();
 
-			SDL_GL_SwapWindow (win);
+			SDL_GL_SwapWindow (win);*/
 		}
 	}
 }

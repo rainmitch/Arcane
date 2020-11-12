@@ -5,7 +5,6 @@
 #include <arcane/threadSafe.h>
 #include <arcane/glm.h>
 
-#include <arcane/UI/arcBuffer.h>
 #include <arcane/image.h>
 
 namespace arcane
@@ -18,7 +17,7 @@ namespace arcane
 		void deregisterMesh (Mesh *mesh);
 
 		void renderFrame (const mat4 &projectionMatrix, const mat4 &viewMatrix);
-		void renderUI (const ArcBuffer &buffer);
+		//void renderUI (const ArcBuffer &buffer);
 		void resizeFrame (const unsigned int &width, const unsigned int &height);
 		void markRenderableObjects (bool *renderableObjects, const size_t &count);
 
