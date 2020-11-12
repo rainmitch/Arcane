@@ -1,4 +1,3 @@
-cmake/
 cmake-build-debug/
 cppCheck.cppcheck
 cppCheck-cppcheck-build-dir
